@@ -10,11 +10,10 @@ const login = async (code: string | null) => {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
-      grant_type: "authorization_code",
-      client_id: "kbyuFDidLLm280LIwVFiazOqjO3ty8KH",
-      client_secret:
-        "60Op4HFM0I8ajz0WdiStAbziZ-VFQttXuxixHHs2R7r7-CW8GR79l-mmLqMhc-Sa",
-      redirect_uri: "https://openidconnect.net/callback",
+      grant_type: process.env.GRANT_TYPE ?? "",
+      client_id: process.env.CLIENT_ID ?? "",
+      client_secret: process.env.CLIENT_SECRET ?? "",
+      redirect_uri: process.env.REDIRECT_URI ?? "",
       code: code ?? "",
     }).toString(),
   };
